@@ -3,8 +3,21 @@ swagger: '2.0'
 info:
   title: User API
   version: "0.3.0"
-
 paths:
+  /health:
+    get:
+      x-swagger-router-controller: gm_analytics
+      operationId: handlers.get_health
+      summary: Returns service health.
+      responses:
+        200:
+          description: Successful response.
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: service health
   /users/{username}:
     get:
       x-swagger-router-controller: gm_analytics
@@ -46,7 +59,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Item'
-
 definitions:
   Item:
     type: object
